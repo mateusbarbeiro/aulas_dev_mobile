@@ -1,7 +1,8 @@
 import 'dart:io';
+import 'package:aulas_dev_mobile/aulas_dev_mobile.dart';
+
 void main(List<String> arguments) 
 {
-
 	print('''
 Opcoes: 
 ---------------------------------
@@ -13,7 +14,7 @@ Opcoes:
 
 	print('Opção: ');
 	var option = int.tryParse(stdin.readLineSync()!);
-	verifyIfCorrectIntInput(option);
+	verifyIfInputIsNull(true, option);
 
 	if (option == 1)
 	{
@@ -52,7 +53,7 @@ void evenOrOdd()
 {
 	print('Informe o numero a ser verificado:');
 	var number = int.tryParse(stdin.readLineSync()!);
-	verifyIfCorrectIntInput(number);
+	verifyIfInputIsNull(true, number);
 	if (number! % 2 == 0) 
 	{
 	  print('\nO numero $number é PAR!\n');
@@ -67,19 +68,19 @@ void calculateAverage()
 {
 	print('Valor 1: ');
 	var value1 = int.tryParse(stdin.readLineSync()!);
-	verifyIfCorrectIntInput(value1);
+	verifyIfInputIsNull(true, value1);
 
 	print('\nValor 2: ');
 	var value2 = int.tryParse(stdin.readLineSync()!);
-	verifyIfCorrectIntInput(value2);
+	verifyIfInputIsNull(true, value2);
 
 	print('\nValor 3: ');
 	var value3 = int.tryParse(stdin.readLineSync()!);
-	verifyIfCorrectIntInput(value3);
+	verifyIfInputIsNull(true, value3);
 
 	print('\nValor 4: ');
 	var value4 = int.tryParse(stdin.readLineSync()!);
-	verifyIfCorrectIntInput(value4);
+	verifyIfInputIsNull(true, value4);
 
 	var average = (value1! + value2! + value3! + value4!) / 4;
 	print('\nA media e de: $average \n');
@@ -91,37 +92,18 @@ void calculateAge()
 
 	print('Que dia voce nasceu?');
 	var day = int.tryParse(stdin.readLineSync()!);
-	intInputIsWithinTheLimit(day, 0, 31);
+	intInputIsWithinTheLimit(day, 0, 31, true);
 
 	print('De qual mes?');
 	var month = int.tryParse(stdin.readLineSync()!);
-	intInputIsWithinTheLimit(month, 1, 12);
+	intInputIsWithinTheLimit(month, 1, 12, true);
 
 	print('Em qual ano?');
 	var year = int.tryParse(stdin.readLineSync()!);
-	intInputIsWithinTheLimit(year, 0, date.year);
+	intInputIsWithinTheLimit(year, 0, date.year, true);
 
 	var birthday = DateTime(year!, month!, day!);
 	var age = date.difference(birthday).inDays ~/ 365;
 
 	print('\nVoce tem $age anos!\n');
-}
-
-void verifyIfCorrectIntInput(option)
-{
-	if (option == null)
-	{
-		print('\nPor favor, informe um valor VALIDO!\n');
-		exit(0);
-	}
-}
-
-void intInputIsWithinTheLimit(value, initialLimit, finalLimit)
-{
-	verifyIfCorrectIntInput(value);
-	if (value < initialLimit || value > finalLimit)
-	{
-		print('\nValor fora do limite esperado!\n');
-		exit(0);
-	}
 }
