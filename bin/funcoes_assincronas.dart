@@ -45,6 +45,11 @@ Future printDateTime() {
   });
 }
 
+// Funções assincronas são funções que não retornam um valor no exato momento 
+// em que são invocadas, podem depender de fatores externos, como a resposa de 
+// um servidor externo entre outras questões. Desta forma, utiliza-se dos termos
+// future, async e await para lidar com esse tipo de função. 
+
 // a classe Future é utilizada para representar um potencial valor, 
 // ou erro que estará disponivel em algum momento no futuro. É similar a 
 // classe Promisse em javaScript. 
